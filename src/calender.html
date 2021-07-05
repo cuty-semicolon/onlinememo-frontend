@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+    <link rel="stylesheet" href="calender.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="title">메모장</h1>
+    </header>
+    <section>
+        <div class="calender">
+            <header class="month"></header>
+            <section class="showcalender">
+                <div class="Dotw">
+                    <ul>
+                        <li style="color: red;">일</li>
+                        <li>월</li>
+                        <li>화</li>
+                        <li>수</li>
+                        <li>목</li>
+                        <li>금</li>
+                        <li style="color: blue;">토</li>
+                    </ul>
+                </div>
+                <div>
+                    <button onclick="beforemonth()"><</button>
+                    <article class="show">
+                    </article>
+                    <button onclick="nextmonth()">></button>
+                </div>
+            </section>
+        </div>
+    </section>
+</body>
+<script src="calender.js"></script>
+</html>

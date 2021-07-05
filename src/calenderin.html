@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memo</title>
+    <link rel="stylesheet" href="calenderin.css">
+</head>
+<body>
+    <section class="modal" id="mymodal">
+        <div class="modalcontent">
+            <header>
+                메모내용
+            </header>
+            <section class="inputsection">
+                <input class="memohead" type="text" placeholder="제목을 입력하세요." onkeydown="if (event.keyCode==13){uploadmemo()}">
+            </section>
+            <section class="memosection">
+                <input class="memoinput" type="text" placeholder="메모할 내용(최대135자)" onkeydown="if (event.keyCode==13){uploadmemo()}">
+            </section>
+            <footer>
+                <button class="enterbtn" onclick="uploadmemo()">추가하기</button>
+            </footer>
+        </div>
+    </section>
+    <header class="showday">
+        <div class="day"></div>
+    </header>
+    <section class="content">
+        <header>
+            <button class="memobtn" onclick="inputmodal()">메모 추가</button>
+        </header>
+        <div>
+            <ul class="screen"></ul>
+        </div>
+    </section>
+    <footer>
+        <div><a href="calender.html"><img src="../images/세미콜론.png"><p>semicolon;</p></a></div>
+    </footer>
+</body>
+<script src="calenderin.js"></script>
+</html>

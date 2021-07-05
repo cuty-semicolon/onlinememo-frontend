@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <header class="title">
+        <h1>회원가입</h1>
+    </header>
+    <section class="content">
+        <div>
+            <div class="idbtn">
+                <input id="id" type="text" placeholder="아이디를 입력하세요.">
+                <button onclick="check()">중복확인</button>
+            </div>
+            <div>
+                <input id="password" type="password" placeholder="비밀번호를 입력하세요.">
+                <div></div>
+            </div>
+            <div>
+                <input id="passwordre" type="password" placeholder="비밀번호를 한번 더 입력하세요.">
+                <div></div>
+            </div>
+            <div class="signup">
+                <button onclick="signup()">회원가입</button>
+            </div>
+        </div>
+    </section>
+    <!-- <footer></footer> -->
+    <footer>
+        <div><a href="index.html"><img src="../images/세미콜론.png"><p>semicolon;</p></a></div>
+    </footer>
+</body>
+<script src="signup.js"></script>
+</html>

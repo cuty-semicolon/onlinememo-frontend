@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header class="title">
+        <h1>메모장</h1>
+    </header>
+    <section class="button">
+        <button onclick="loginmodal()">로그인</button>
+        <button class="signup">회원가입</button>
+    </section>
+    <section class="modal" id="mymodal">
+        <div class="modalcontent">
+            <header>로그인</header>
+            <section>
+                <input type="text" placeholder="아이디를 입력하세요.">
+                <input type="password" placeholder="비밀번호를 입력하세요.">
+                <button>확인</button>
+            </section>
+            <footer class="modalfooter">혹시 아직 회원이 아니신가요?&nbsp;<a href="signup.html">회원가입</a></footer>
+        </div>
+    </section>
+    <footer>
+        <div><a href="index.html"><img src="../images/세미콜론.png"><p>semicolon;</p></a></div>
+    </footer>
+</body>
+<script src="main.js"></script>
+</html>
