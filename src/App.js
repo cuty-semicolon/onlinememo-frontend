@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Login from "./Components/LoginPage/Login";
+import { Route,Redirect } from 'react-router';
+import './App.scss'
+import MainPage from "./Components/MainPage/Mainpage";
+import Header from "./Components/Header/Header";
+import MemoPage from "./Components/Pages/MemoPage/MemoPage";
+import Bottom from "./Components/Bottom/Bottom";
 function App() {
+  let login = true;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        !login && <Redirect to ="/login"/>
+      }
+      <Route path="/login" component={Login}/>
+      <Header/>
+      <Route path="/" exact component={MainPage}/>
+      <Route path={`/memoPage`} component={MemoPage}/>
+      <Bottom login={login}/>
     </div>
   );
 }
