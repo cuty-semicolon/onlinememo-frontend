@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Login from "./Components/LoginPage/Login";
 import { Route,Redirect } from 'react-router';
 import './App.scss'
@@ -6,17 +7,21 @@ import Header from "./Components/Header/Header";
 import MemoPage from "./Components/Pages/MemoPage/MemoPage";
 import Bottom from "./Components/Bottom/Bottom";
 function App() {
-  let login = true;
+  const [isLogin, setIsLogin] = useState(false);
+
   return (
     <div className="App">
-      {
-        !login && <Redirect to ="/login"/>
-      }
-      <Route path="/login" component={Login}/>
+      <Route path="/login" >
+        <Login />
+      </Route>
       <Header/>
-      <Route path="/" exact component={MainPage}/>
-      <Route path={`/memoPage`} component={MemoPage}/>
-      <Bottom login={login}/>
+      <Route path="/" exact >
+        <MainPage isLogin={isLogin} />
+      </Route>
+      <Route path="/memopage">
+        <MemoPage isLogin={isLogin}/>
+      </Route>
+      <Bottom login={isLogin}/>
     </div>
   );
 }

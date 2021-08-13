@@ -1,10 +1,11 @@
 import React,{useEffect, useState} from 'react';
+import { Redirect } from 'react-router-dom';
 import './MainPage.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft,faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-function Mainpage(){
+function Mainpage({ isLogin }){
     const today = new Date();//오늘 날짜정보
     let todayYear = today.getFullYear();//오늘 연도
     let todayMonth = today.getMonth() + 1;//오늘 달
@@ -38,6 +39,14 @@ function Mainpage(){
     const dayArr = [];
     for(let i = 0;i<lastday;i++) dayArr[i] = i+1
     for(let i = 0;i<day;i++) dayArr.unshift(null);
+
+
+  if (!isLogin) {
+    return <Redirect to="/login" />
+  }
+  
+
+
   return(
       <div className="main">
           <section className="calendar">

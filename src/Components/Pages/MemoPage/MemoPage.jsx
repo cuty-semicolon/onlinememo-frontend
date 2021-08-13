@@ -3,7 +3,8 @@ import './MemoPage.scss';
 import { faTrashAlt,faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
-function MemoPage({}){
+import { Redirect } from 'react-router-dom';
+function MemoPage({ isLogin }){
     const [users,setUsers] = useState(null);
     const [error,setError] = useState(null);
     const [loading,setLoading] = useState(false);
@@ -46,6 +47,12 @@ function MemoPage({}){
             content:''
         })
     },[title,content]);
+    
+    if (!isLogin) {
+        return (<Redirect to="/login" />)
+    }
+
+
   return(
         <>
         <div className="memoSection">
