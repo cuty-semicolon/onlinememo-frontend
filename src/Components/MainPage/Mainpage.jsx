@@ -1,17 +1,17 @@
 import React,{useEffect, useState} from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useLocation } from 'react-router-dom';
 import './MainPage.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft,faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+
 function Mainpage({ isLogin }){
     const today = new Date();//오늘 날짜정보
     let todayYear = today.getFullYear();//오늘 연도
     let todayMonth = today.getMonth() + 1;//오늘 달
+    let todayDate = today.getDate();
     const nowLastday = new Date(todayYear,todayMonth,0).getDate(); //그 달의 마지막날
     const firstDay = new Date(todayYear, todayMonth-1,1).getDay(); // 해당 달의 1일의 요일
-    // const {todayYear,todayMonth,nowLastday,firstDay} = props;
     const [year, setYear] = useState(todayYear); //year: 2021
     const [month, setMonth] = useState(todayMonth);// month : 8
     const [lastday, setLastday] = useState(nowLastday); // lastday : 31
@@ -25,6 +25,10 @@ function Mainpage({ isLogin }){
             setYear(year-1);
             setMonth(12);
         }
+    }
+    const todayEqual = (todayFull,today) => {
+        if(todayFull === today) return true;
+        else return false;
     }
     const setPrevMonth = () => {
         const preveMonth = month+1;
@@ -40,12 +44,10 @@ function Mainpage({ isLogin }){
     for(let i = 0;i<lastday;i++) dayArr[i] = i+1
     for(let i = 0;i<day;i++) dayArr.unshift(null);
 
-
-  if (!isLogin) {
-    return <Redirect to="/login" />
-  }
-  
-
+    console.log("mainPage:",isLogin);
+    if (!isLogin) {
+        return <Redirect to="/login" />
+    }
 
   return(
       <div className="main">
@@ -69,6 +71,7 @@ function Mainpage({ isLogin }){
                           {dayArr.map(day => (
                               <Link className='Link' to={`/memoPage?year=${year}&month=${month}&day=${day}`}><li className="dayDiv" id={`${year}-${month}-${day}`}>
                                   <p className="eachDay">{day}</p>
+                                  {todayEqual(`${todayYear}-${todayMonth}-${todayDate}`,`${year}-${month}-${day}`) ? <div className="isToday"><p>오늘</p></div> : ''}
                                 </li></Link>
                           ))}
                       </ul>

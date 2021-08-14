@@ -71,18 +71,38 @@
           .Link {
             display: flex;
             width: 14%;
+            height: 20%;
             border: 1.3px solid black;
             .dayDiv {
+              width: 100%;
+              height: 100%;
               .eachDay {
                 margin-top: 5px;
                 margin-left: 5px;
               }
+              .isToday {
+                width: 50%;
+                height: 50%;
+                margin-left: 20%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                p {
+                  color: red;
+                  z-index: 99;
+                  font-weight: 900;
+                }
+              }
+            }
+            .dayDiv:hover {
+              background-color: black;
+              color: white;
             }
           }
-          .Link:hover {
-            background-color: black;
-            color: white;
-          }
+          // .Link:hover {
+          //   background-color: black;
+          //   color: white;
+          // }
         }
       }
     }

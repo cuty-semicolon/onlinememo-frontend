@@ -3,8 +3,10 @@ import './MemoPage.scss';
 import { faTrashAlt,faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useLocation } from 'react-router-dom';
 function MemoPage({ isLogin }){
+    const location = useLocation();
+    console.log(location.day == "null")
     const [users,setUsers] = useState(null);
     const [error,setError] = useState(null);
     const [loading,setLoading] = useState(false);
@@ -15,7 +17,6 @@ function MemoPage({ isLogin }){
                 setUsers(null);
                 setLoading(true);
                 const response = await axios.get(
-                    'https://jsonplaceholder.typicode.com/users'
                     );
                 setUsers(response.data);
             } catch(e) {
@@ -25,7 +26,6 @@ function MemoPage({ isLogin }){
        };
        fetch();
     },[])
-    console.log(users)
     const [text,setText] = useState({
         title:'',
         content:''
@@ -47,7 +47,10 @@ function MemoPage({ isLogin }){
             content:''
         })
     },[title,content]);
-    
+    if(location.day == "null") {
+        console.log("return");
+        return (<Redirect to="/"/>)
+    }
     if (!isLogin) {
         return (<Redirect to="/login" />)
     }
