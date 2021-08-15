@@ -6,8 +6,10 @@ import MainPage from "./Components/MainPage/Mainpage";
 import Header from "./Components/Header/Header";
 import MemoPage from "./Components/Pages/MemoPage/MemoPage";
 import Bottom from "./Components/Bottom/Bottom";
+import SignUp from './Components/SignUp/SignUp';
+
 function App() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const [userName, setUserName] = useState('');
   console.log(isLogin);
   return (
@@ -16,6 +18,9 @@ function App() {
         <Login isLogin={isLogin}  setIsLogin={setIsLogin} setUserName={setUserName}/>
       </Route>
       <Header userName={userName}/>
+      <Route path="/signup">
+        <SignUp/>
+      </Route>
       <Route path="/" exact >
         <MainPage isLogin={isLogin} />
       </Route>
