@@ -29,11 +29,11 @@ function Login(props){
     const onClickLogin = () => {
         if(email.length > 0 && password.length > 0){
             axios.post('http://localhost:3000/api/user/login',{
-            email: email,
-            password: password,
+                email: email,
+                password: password,
         })
             .then(function (response){
-                console.log('username:',response.data.data.name);
+                console.log(response);
                 setUserName(response.data.data.name);
                 setIsLogin(true);
                 console.log("로그인 성공");

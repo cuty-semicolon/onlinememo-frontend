@@ -4,28 +4,33 @@ import { faTrashAlt,faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 import { Redirect, useLocation } from 'react-router-dom';
+let cnt = 0;
 function MemoPage({ isLogin }){
     const location = useLocation();
-    console.log(location.day == "null")
-    const [users,setUsers] = useState(null);
-    const [error,setError] = useState(null);
-    const [loading,setLoading] = useState(false);
-    useEffect(()=> {
-       const fetch = async  () => {
-            try{
-                setError(null);
-                setUsers(null);
-                setLoading(true);
-                const response = await axios.get(
-                    );
-                setUsers(response.data);
-            } catch(e) {
-                setError(e);
-            }
-            setLoading(false);
-       };
-       fetch();
-    },[])
+    const isToday = location.isToday;
+    const isUSerName = location.isUSerName;
+    const onClickSave = () => {
+        axios.post(`http://localhost:3000/api/my/${isToday}`,{
+            title : title,
+            content : content,
+            memoId : cnt,
+            user_id: isUSerName,
+            isToday : isToday
+        })
+        .then(function(response){
+            console.log(response);
+        })
+        .catch(function(error){
+            console.log(error);
+        })
+        axios.get(`http://localhost:3000/api/my/${2}`)
+        .then(function(response){
+            content = response.data.data.content;
+            title = response.data.data.title;
+        }).catch(function(error){
+            console.log(error);
+        })
+    }
     const [text,setText] = useState({
         title:'',
         content:''
@@ -37,10 +42,10 @@ function MemoPage({ isLogin }){
             [e.target.name] : e.target.value,
         }
         setText(nextContent);
-        console.log('title:',title);
-        console.log('content:',content);
     },[title,content])
+    console.log('title:',title,"content :",content);
     const onClickAddMemo = useCallback(e=>{
+        cnt++;
         console.log('title:',title,'content:',content);
         setText({
             title:'',
@@ -74,7 +79,7 @@ function MemoPage({ isLogin }){
                     </div>
                     <div className="memoOptions">
                         <button className="remove"><FontAwesomeIcon icon={faTrashAlt}/><p>삭제하기</p></button>
-                        <button className="save"><FontAwesomeIcon icon={faSave}/><p>저장하기</p></button>
+                        <button className="save" onClick={onClickSave}><FontAwesomeIcon icon={faSave}/><p>저장하기</p></button>
                     </div>
                 </header>
                 <div className="memoContent">

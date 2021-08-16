@@ -13,6 +13,8 @@ function Header(props){
     const isMemo = location.pathname.includes('memoPage');
     const isSignUp = location.pathname.includes('signup');
     location.day = day;
+    location.isToday = `${year}-${month}-${day}`;
+    location.isUSerName = userName;
     // console.log(location);
     return(
         <>

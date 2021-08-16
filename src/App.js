@@ -9,7 +9,7 @@ import Bottom from "./Components/Bottom/Bottom";
 import SignUp from './Components/SignUp/SignUp';
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [userName, setUserName] = useState('');
   console.log(isLogin);
   return (
